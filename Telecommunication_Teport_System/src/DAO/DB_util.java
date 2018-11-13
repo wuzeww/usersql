@@ -8,10 +8,10 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class DB_util {
-    public static String URL;
-    public static String USERNAME;
-    public static String PASSWORD;
-    public static String DRIVER;
+    private static String URL;
+    private static String USERNAME;
+    private static String PASSWORD;
+    private static String DRIVER;
     private static ResourceBundle rb = ResourceBundle.getBundle("com.util.db.db-config");
 
     public static Connection getConnection(){

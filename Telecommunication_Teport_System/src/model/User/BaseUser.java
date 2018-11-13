@@ -4,6 +4,11 @@ public class BaseUser {
     private String UserID;
     private String UserName;
 
+    public static final int NORMAL = 0;
+    public static final int CHECKER = 1;
+    public static final int ADMIN = 3;
+    public static final int DEVELOPER = 4;
+
     public String getUserID() {
         return UserID;
     }
