@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class DB_util {
@@ -12,7 +13,7 @@ public class DB_util {
     private static String USERNAME;
     private static String PASSWORD;
     private static String DRIVER;
-    private static ResourceBundle rb = ResourceBundle.getBundle("com.util.db.db-config");
+//    private static ResourceBundle rb = ResourceBundle.getBundle("db_config");
 
     public static Connection getConnection(){
         Connection conn = null;
@@ -26,10 +27,10 @@ public class DB_util {
     }
 
     static{
-        URL = rb.getString("jdbc.url");
-        USERNAME = rb.getString("jdbc.username");
-        PASSWORD = rb.getString("jdbc.password");
-        DRIVER = rb.getString("jdbc.driver");
+        URL = "jdbc:mysql://119.23.222.74:3306/ttr?serverTimezone=GMT";
+        USERNAME = "root";
+        PASSWORD = "123456";
+        DRIVER = "com.mysql.cj.jdbc.Driver";
         try {
             Class.forName(DRIVER);
         } catch (ClassNotFoundException e) {

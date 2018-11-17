@@ -1,4 +1,6 @@
-<%@ page import="model.User.NormalUser" %><%--
+<%@ page import="model.User.NormalUser" %>
+<%@page isELIgnored="false"%>
+<%--
   Created by IntelliJ IDEA.
   User: Eason
   Date: 2018/11/13
@@ -15,6 +17,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
+
     <%--<link rel="icon" href="../../favicon.ico">--%>
 
     <title>电信报表系统</title>
@@ -24,7 +27,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="/template/Main_Page/css/dashboard.css" rel="stylesheet">
 
 
 </head>
@@ -40,10 +43,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <%  Object o = session.getAttribute("user");
-                NormalUser normalUser = (NormalUser)o;
-            %>
-            <a class="navbar-brand" href="#">欢迎您， <%=normalUser.getUserID()%></a>
+            <%--在这是左上角的用户名--%>
+            <a class="navbar-brand" href="#">欢迎您， ${userName}</a>
+
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -246,9 +248,7 @@
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="../../assets/js/vendor/holder.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
 </body>
 </html>
 

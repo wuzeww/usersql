@@ -1,0 +1,7 @@
+CREATE TABLE user
+(
+    User_id varchar(10) PRIMARY KEY NOT NULL,
+    UserName varchar(20) NOT NULL,
+    Pass_word varchar(10) NOT NULL,
+    User_Type int DEFAULT 0 NOT NULL
+);
