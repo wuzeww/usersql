@@ -17,14 +17,27 @@ public class Create_ID {
     public static final String sell = "sell";
     public static final String Settle = "Settle";
     public static String get_ID(String type) throws SQLException {
-        String id = get_present_ID(type);
-        int int_id = Integer.parseInt(id);
-        int_id++;
-        change_present_ID(type , int_id+"");
-        return int_id+"";
+
+        Get_ID get_id = new Get_ID();
+        return get_id.get_ID(type);
     }
 
-    private static String get_present_ID(String type) throws SQLException {
+}
+
+class Get_ID {
+    String get_ID(String type) throws SQLException {
+
+        int int_id;
+        synchronized (this) {
+            String id = get_present_ID(type);
+            int_id = Integer.parseInt(id);
+            int_id++;
+            change_present_ID(type , int_id+"");
+        }
+
+        return int_id+"";
+    }
+    private String get_present_ID(String type) throws SQLException {
         Connection connection = DB_util.getConnection();
         String sql = "select ? from id_table";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -35,15 +48,15 @@ public class Create_ID {
         return id;
     }
 
-    private static void change_present_ID(String type, String new_id) throws SQLException {
+    private void change_present_ID(String type, String new_id) throws SQLException {
         Connection connection = DB_util.getConnection();
         String sql = "update id_table set ? = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1,type);
+        preparedStatement.setString(1, type);
         preparedStatement.setString(2, new_id);
         preparedStatement.executeUpdate();
 
-        DB_util.close(null,preparedStatement,connection);
-
+        DB_util.close(null, preparedStatement, connection);
     }
 }
+
